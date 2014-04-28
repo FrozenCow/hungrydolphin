@@ -473,9 +473,6 @@ define(['platform','game','vector','staticcollidable','linesegment','editor','re
 			var flipVertical = Math.cos(this.angle) > 0;
 			g.scalerotate(me.position.x,me.position.y,1/32*me.radius*0.3,(flipVertical?-1:1)*1/32*me.radius*0.3,me.angle,function() {
 				g.drawCenteredImage(images.dolphin,me.position.x,me.position.y);
-				g.fillCircle(me.position.x,me.position.y,me.radius);
-				g.strokeStyle('white');
-				g.strokeLine(me.position.x,me.position.y,me.position.x+me.radius,me.position.y);
 			});
 		};
 		p.nextScore = function() {
@@ -646,10 +643,6 @@ define(['platform','game','vector','staticcollidable','linesegment','editor','re
 			var me = this;
 			var scale = 0.5+me.level*0.5;
 			g.scalerotate(me.position.x,me.position.y,1/32*scale,(me.velocity.y>0?-1:1)*1/32*scale,me.velocity.angle(),function() {
-				g.fillStyle('white');
-				g.fillCircle(me.position.x,me.position.y,me.level*0.5);
-				g.strokeStyle('black');
-				g.strokeLine(me.position.x,me.position.y,me.position.x+0.5,me.position.y);
 				g.drawCenteredImage(images.fish01,me.position.x,me.position.y);
 			});
 		};
@@ -1154,7 +1147,7 @@ define(['platform','game','vector','staticcollidable','linesegment','editor','re
 			g.context.globalAlpha = 1;
 			g.context.font = '30px arial';
 			g.fillStyle('white');
-			g.fillCenteredText('... and you like food to grow...',game.width*0.5,game.height*0.3);
+			g.fillCenteredText('... and you like food...',game.width*0.5,game.height*0.3);
 			g.fillCenteredText('Click to continue',game.width*0.5,game.height*0.8);
 		}
 		function update(dt,next) {
@@ -1329,6 +1322,7 @@ define(['platform','game','vector','staticcollidable','linesegment','editor','re
 			g.fillRectangle(0,0,game.width,game.height);
 			g.context.font = '30px arial';
 			g.fillStyle('white');
+			g.fillCenteredText('the world is a harsh place',game.width*0.5,game.height*0.2);
 			g.fillCenteredText('You died',game.width*0.5,game.height*0.5);
 			g.fillCenteredText('due to lack of oxygen',game.width*0.5,game.height*0.5+50);
 		}
